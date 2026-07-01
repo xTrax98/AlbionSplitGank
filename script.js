@@ -1,0 +1,68 @@
+
+const $=id=>document.getElementById(id);
+const fields=["fecha","nombre","tabla","reparacion","bolsas","jugadores"];
+if(!$("fecha").value){
+ const d=new Date();
+ d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
+ $("fecha").value=d.toISOString().slice(0,16);
+}
+fields.forEach(f=>{
+ const v=localStorage.getItem(f);
+ if(v)$ (f).value=v;
+ $(f).addEventListener("input",calc);
+});
+function n(v){return Number((v||"").replace(/\./g,"").replace(",","."))||0;}
+function f(v){return Math.round(v).toLocaleString("es-ES");}
+function save(){fields.forEach(x=>localStorage.setItem(x,$(x).value));}
+function calc(){
+ save();
+ const tabla=n($("tabla").value),rep=n($("reparacion").value),bol=n($("bolsas").value),jug=Math.max(1,Number($("jugadores").value)||1);
+ const neta=Math.max(0,tabla-rep),venta=neta*0.825,total=venta+bol,split=total/jug;
+ $("neta").textContent=f(neta);
+ $("venta").textContent=f(venta);
+ $("total").textContent=f(total);
+ $("split").textContent=f(split);
+}
+function copiar(){
+ const txt=`💰 LOOT SPLIT GANKEO
+
+📅 Fecha
+${$("fecha").value.replace("T"," ")}
+
+🏴 Nombre
+${$("nombre").value}
+
+📦 Loot Tabla
+${f(n($("tabla").value))}
+
+🛠 Reparación
+${f(n($("reparacion").value))}
+
+📉 Tabla Neta
+${$("neta").textContent}
+
+💲 Venta Tabla (82,5%)
+${$("venta").textContent}
+
+🎒 Loot Bolsas
+${f(n($("bolsas").value))}
+
+👥 Jugadores
+${$("jugadores").value}
+
+━━━━━━━━━━━━━━━━━━
+
+💰 Loot Total
+${$("total").textContent}
+
+💵 Loot Split
+${$("split").textContent} por jugador`;
+ navigator.clipboard.writeText(txt);
+ alert("Copiado.");
+}
+function limpiar(){
+ fields.forEach(f=>$(f).value="");
+ localStorage.clear();
+ calc();
+}
+calc();

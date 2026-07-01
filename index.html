@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Albion Gank Split Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="card">
+<h1>🗡️ Albion Gank Split Manager</h1>
+
+<label>Fecha-Hora</label><input id="fecha" type="datetime-local">
+<label>Nombre</label><input id="nombre">
+<label>Loot Tabla</label><input id="tabla">
+<label>Reparación</label><input id="reparacion">
+<label>Loot Bolsas</label><input id="bolsas">
+<label>Jugadores</label><input id="jugadores" type="number" min="1">
+
+<div class="results">
+<p>Tabla Neta: <span id="neta">0</span></p>
+<p>Venta (82,5%): <span id="venta">0</span></p>
+<p>Loot Total: <span id="total">0</span></p>
+<h2>Loot Split: <span id="split">0</span></h2>
+</div>
+
+<button onclick="copiar()">📋 Copiar para Discord</button>
+<button onclick="limpiar()">🧹 Limpiar</button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
