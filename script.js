@@ -79,13 +79,11 @@ ${$("jugadores").value}
 ${$("total").textContent}
 
 💵 Loot Split
-${$("split").textContent} por jugador`;
- navigator.clipboard.writeText(txt);
- alert("Copiado.");
+${$("split").textContent} por jugador
 
- ━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━
 ⚔ Calculado con Gank Split Manager by xTrux
- https://xtrax98.github.io/AlbionSplitGank/
+https://xtrax98.github.io/AlbionSplitGank/`;
 }
 function limpiar(){
  fields.forEach(f=>$(f).value="");
