@@ -25,7 +25,42 @@ copiar:"📋 Copiar para Discord",
 limpiar:"🧹 Limpiar",
 
 copiado:"Copiado.",
-error:"No se pudo copiar."
+error:"No se pudo copiar.",
+
+infoTitulo:"📋 ¿Cómo se calcula el Loot Split?",
+
+infoContenido:`
+<p><strong>Fórmula utilizada:</strong></p>
+
+<ol>
+<li><strong>Loot Tabla - Reparación = Tabla Neta</strong></li>
+<li><strong>Tabla Neta × % Venta = Venta Tabla</strong></li>
+<li><strong>Venta Tabla + Loot Bolsas = Subtotal</strong></li>
+<li><strong>Subtotal × % Impuestos = Impuestos</strong></li>
+<li><strong>Subtotal - Impuestos = Loot Total</strong></li>
+<li><strong>Loot Total ÷ Jugadores = Loot Split</strong></li>
+</ol>
+
+<hr>
+
+<p><strong>Ejemplo</strong></p>
+
+<p>
+Loot Tabla: <b>10.000.000</b><br>
+Reparación: <b>500.000</b><br>
+Tabla Neta: <b>9.500.000</b><br><br>
+
+Venta (82,5%): <b>7.837.500</b><br>
+Loot Bolsas: <b>1.200.000</b><br>
+Subtotal: <b>9.037.500</b><br>
+Impuestos (5%): <b>451.875</b><br><br>
+
+Loot Total: <b>8.585.625</b><br>
+Jugadores: <b>7</b><br><br>
+
+<b>Loot Split: 1.226.518</b>
+</p>
+`
 },
 
 en:{
@@ -50,7 +85,42 @@ copiar:"📋 Copy for Discord",
 limpiar:"🧹 Clear",
 
 copiado:"Copied.",
-error:"Unable to copy."
+error:"Unable to copy.",
+
+infoTitulo:"📋 How is the Loot Split calculated?",
+
+infoContenido:`
+<p><strong>Formula used:</strong></p>
+
+<ol>
+<li><strong>Loot Value - Repair Cost = Net Loot</strong></li>
+<li><strong>Net Loot × Sale % = Sale Value</strong></li>
+<li><strong>Sale Value + Bag Loot = Subtotal</strong></li>
+<li><strong>Subtotal × Tax % = Taxes</strong></li>
+<li><strong>Subtotal - Taxes = Total Loot</strong></li>
+<li><strong>Total Loot ÷ Players = Loot Split</strong></li>
+</ol>
+
+<hr>
+
+<p><strong>Example</strong></p>
+
+<p>
+Loot Value: <b>10,000,000</b><br>
+Repair Cost: <b>500,000</b><br>
+Net Loot: <b>9,500,000</b><br><br>
+
+Sale (82.5%): <b>7,837,500</b><br>
+Bag Loot: <b>1,200,000</b><br>
+Subtotal: <b>9,037,500</b><br>
+Taxes (5%): <b>451,875</b><br><br>
+
+Total Loot: <b>8,585,625</b><br>
+Players: <b>7</b><br><br>
+
+<b>Loot Split: 1,226,518</b>
+</p>
+`
 }
 
 };
@@ -96,6 +166,10 @@ function cambiarIdioma(){
 
     $("btnCopiar").textContent = t.copiar;
     $("btnLimpiar").textContent = t.limpiar;
+
+    // Información del cálculo
+    $("tituloInfo").textContent = t.infoTitulo;
+    $("contenidoInfo").innerHTML = t.infoContenido;
 }
 
 function calc(){
