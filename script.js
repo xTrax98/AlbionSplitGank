@@ -14,23 +14,35 @@ fields.forEach(f=>{
 function n(v){return Number((v||"").replace(/\./g,"").replace(",","."))||0;}
 function f(v){return Math.round(v).toLocaleString("es-ES");}
 function save(){fields.forEach(x=>localStorage.setItem(x,$(x).value));}
+
 function calc(){
  save();
- const tabla=n($("tabla").value),rep=n($("reparacion").value),bol=n($("bolsas").value),jug=Math.max(1,Number($("jugadores").value)||1);
+
+ const tabla=n($("tabla").value),
+       rep=n($("reparacion").value),
+       bol=n($("bolsas").value),
+       jug=Math.max(1,Number($("jugadores").value)||1);
+
  const neta=Math.max(0,tabla-rep);
  const pv=Number($("porcentajeVenta").value)||82.5;
  const pi=Number($("porcentajeImpuestos").value)||0;
+
  const venta=neta*(pv/100);
- const impuestos=venta*(pi/100);
- const total=venta-impuestos+bol,split=total/jug;
+ const subtotal=venta+bol;
+ const impuestos=subtotal*(pi/100);
+ const total=subtotal-impuestos;
+ const split=total/jug;
+
  $("ventaPct").textContent=String(pv).replace(".",",");
  $("impPct").textContent=String(pi).replace(".",",");
+
  $("neta").textContent=f(neta);
  $("venta").textContent=f(venta);
  $("impuestos").textContent=f(impuestos);
  $("total").textContent=f(total);
  $("split").textContent=f(split);
 }
+
 function copiar(){
  const txt=`💰 LOOT SPLIT GANKEO
 
