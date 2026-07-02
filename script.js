@@ -134,88 +134,46 @@ function copiar(){
 
  if(lang === "es"){
 
-txt=`💰 LOOT SPLIT GANKEO
+txt=`💰 LOOT SPLIT
 
-📅 Fecha
-${$("fecha").value.replace("T"," ")}
+📅 ${$("fecha").value.replace("T"," ")}
+🏴 ${$("nombre").value}
 
-🏴 Nombre
-${$("nombre").value}
-
-📦 Loot Tabla
-${f(n($("tabla").value))}
-
-🛠 Reparación
-${f(n($("reparacion").value))}
-
-📉 Tabla Neta
-${$("neta").textContent}
-
-💲 Venta Tabla (${$("ventaPct").textContent}%)
-${$("venta").textContent}
-
-💸 Impuestos (${$("impPct").textContent}%)
-${$("impuestos").textContent}
-
-🎒 Loot Bolsas
-${f(n($("bolsas").value))}
-
-👥 Jugadores
-${$("jugadores").value}
+📦 Tab: ${f(n($("tabla").value))}
+🛠 Rep: ${f(n($("reparacion").value))}
+📉 Neta: ${$("neta").textContent}
+💲 Venta (${ $("ventaPct").textContent }%): ${$("venta").textContent}
+💸 Imp. (${ $("impPct").textContent }%): ${$("impuestos").textContent}
+🎒 Bolsas: ${f(n($("bolsas").value))}
+👥 Jugadores: ${$("jugadores").value}
 
 ━━━━━━━━━━━━━━━━━━
-
-💰 Loot Total
-${$("total").textContent}
-
-💵 Loot Split
-${$("split").textContent} por jugador
-
+💰 Total: ${$("total").textContent}
+💵 Split: ${$("split").textContent} c/u
 ━━━━━━━━━━━━━━━━━━
-⚔ Calculado con Gank Split Manager by xTrux
+⚔ Gank Split Manager by xTrux
 https://xtrax98.github.io/AlbionSplitGank/`;
 
- }else{
+ } else {
 
 txt=`💰 GANK LOOT SPLIT
 
-📅 Date
-${$("fecha").value.replace("T"," ")}
+📅 ${$("fecha").value.replace("T"," ")}
+🏴 ${$("nombre").value}
 
-🏴 Name
-${$("nombre").value}
-
-📦 Loot Value
-${f(n($("tabla").value))}
-
-🛠 Repair Cost
-${f(n($("reparacion").value))}
-
-📉 Net Loot
-${$("neta").textContent}
-
-💲 Sale Value (${$("ventaPct").textContent}%)
-${$("venta").textContent}
-
-💸 Taxes (${$("impPct").textContent}%)
-${$("impuestos").textContent}
-
-🎒 Bag Loot
-${f(n($("bolsas").value))}
-
-👥 Players
-${$("jugadores").value}
+📦 Loot: ${f(n($("tabla").value))}
+🛠 Repair: ${f(n($("reparacion").value))}
+📉 Net: ${$("neta").textContent}
+💲 Sale (${ $("ventaPct").textContent }%): ${$("venta").textContent}
+💸 Tax (${ $("impPct").textContent }%): ${$("impuestos").textContent}
+🎒 Bags: ${f(n($("bolsas").value))}
+👥 Players: ${$("jugadores").value}
 
 ━━━━━━━━━━━━━━━━━━
-
-💰 Total Loot
-${$("total").textContent}
-
-💵 Loot Split
-${$("split").textContent} per player
-
+💰 Total: ${$("total").textContent}
+💵 Split: ${$("split").textContent} each
 ━━━━━━━━━━━━━━━━━━
-⚔ Calculated with Gank Split Manager by xTrux
+⚔ Gank Split Manager by xTrux
 https://xtrax98.github.io/AlbionSplitGank/`;
 
  }
