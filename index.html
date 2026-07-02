@@ -3,23 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Albion Gank Split Manager</title>
+<title>Albion Gank Split Manager by xTrux</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="card">
-<h1>🗡️ Albion Gank Split Manager</h1>
+<h1>🗡️Gank Split Manager by xTrux</h1>
 
 <label>Fecha-Hora</label><input id="fecha" type="datetime-local">
 <label>Nombre</label><input id="nombre">
-<label>Loot Tabla</label><input id="tabla">
+<label>Loot Tab</label><input id="tabla">
 <label>Reparación</label><input id="reparacion">
+<label>% Venta Tabla</label><input id="porcentajeVenta" value="82.5">
+<label>% Impuestos</label><input id="porcentajeImpuestos" value="0">
 <label>Loot Bolsas</label><input id="bolsas">
 <label>Jugadores</label><input id="jugadores" type="number" min="1">
 
 <div class="results">
-<p>Tabla Neta: <span id="neta">0</span></p>
-<p>Venta (82,5%): <span id="venta">0</span></p>
+<p>Tab Neta: <span id="neta">0</span></p>
+<p>Venta (<span id="ventaPct">82,5</span>%): <span id="venta">0</span></p>
+<p>Impuestos (<span id="impPct">0</span>%): <span id="impuestos">0</span></p>
 <p>Loot Total: <span id="total">0</span></p>
 <h2>Loot Split: <span id="split">0</span></h2>
 </div>

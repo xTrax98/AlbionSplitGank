@@ -1,6 +1,6 @@
 
 const $=id=>document.getElementById(id);
-const fields=["fecha","nombre","tabla","reparacion","bolsas","jugadores"];
+const fields=["fecha","nombre","tabla","reparacion","porcentajeVenta","porcentajeImpuestos","bolsas","jugadores"];
 if(!$("fecha").value){
  const d=new Date();
  d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
@@ -17,9 +17,17 @@ function save(){fields.forEach(x=>localStorage.setItem(x,$(x).value));}
 function calc(){
  save();
  const tabla=n($("tabla").value),rep=n($("reparacion").value),bol=n($("bolsas").value),jug=Math.max(1,Number($("jugadores").value)||1);
- const neta=Math.max(0,tabla-rep),venta=neta*0.825,total=venta+bol,split=total/jug;
+ const neta=Math.max(0,tabla-rep);
+ const pv=Number($("porcentajeVenta").value)||82.5;
+ const pi=Number($("porcentajeImpuestos").value)||0;
+ const venta=neta*(pv/100);
+ const impuestos=venta*(pi/100);
+ const total=venta-impuestos+bol,split=total/jug;
+ $("ventaPct").textContent=String(pv).replace(".",",");
+ $("impPct").textContent=String(pi).replace(".",",");
  $("neta").textContent=f(neta);
  $("venta").textContent=f(venta);
+ $("impuestos").textContent=f(impuestos);
  $("total").textContent=f(total);
  $("split").textContent=f(split);
 }
@@ -41,8 +49,11 @@ ${f(n($("reparacion").value))}
 📉 Tabla Neta
 ${$("neta").textContent}
 
-💲 Venta Tabla (82,5%)
+💲 Venta Tabla (${$("ventaPct").textContent}%)
 ${$("venta").textContent}
+
+💸 Impuestos (${$("impPct").textContent}%)
+${$("impuestos").textContent}
 
 🎒 Loot Bolsas
 ${f(n($("bolsas").value))}

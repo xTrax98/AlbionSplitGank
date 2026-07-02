@@ -1,4 +1,16 @@
-body{background:#181818;color:#fff;font-family:Arial,sans-serif;display:flex;justify-content:center;padding:30px}
+body{
+    background-image:url("img/fondo.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    color:#fff;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:30px;
+}
 .card{background:#252525;padding:24px;border-radius:12px;max-width:550px;width:100%}
 label{display:block;margin-top:10px}
 input{width:100%;padding:10px;box-sizing:border-box;background:#333;color:#fff;border:1px solid #555;border-radius:6px}
