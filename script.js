@@ -1,5 +1,60 @@
 
 const $=id=>document.getElementById(id);
+
+const textos = {
+
+es:{
+titulo:"🗡️ Gank Split Manager by xTrux",
+
+fecha:"Fecha-Hora",
+nombre:"Nombre",
+tabla:"Loot Tab",
+reparacion:"Reparación",
+venta:"% Venta Tabla",
+impuestos:"% Impuestos",
+bolsas:"Loot Bolsas",
+jugadores:"Jugadores",
+
+tabNeta:"Tab Neta",
+ventaTxt:"Venta",
+impuestosTxt:"Impuestos",
+lootTotal:"Loot Total",
+lootSplit:"Loot Split",
+
+copiar:"📋 Copiar para Discord",
+limpiar:"🧹 Limpiar",
+
+copiado:"Copiado.",
+error:"No se pudo copiar."
+},
+
+en:{
+titulo:"🗡️ Gank Split Manager by xTrux",
+
+fecha:"Date & Time",
+nombre:"Name",
+tabla:"Loot Value",
+reparacion:"Repair Cost",
+venta:"% Sale Value",
+impuestos:"% Taxes",
+bolsas:"Bag Loot",
+jugadores:"Players",
+
+tabNeta:"Net Loot",
+ventaTxt:"Sale Value",
+impuestosTxt:"Taxes",
+lootTotal:"Total Loot",
+lootSplit:"Loot Split",
+
+copiar:"📋 Copy for Discord",
+limpiar:"🧹 Clear",
+
+copiado:"Copied.",
+error:"Unable to copy."
+}
+
+};
+
 const fields=["fecha","nombre","tabla","reparacion","porcentajeVenta","porcentajeImpuestos","bolsas","jugadores"];
 if(!$("fecha").value){
  const d=new Date();
@@ -14,6 +69,34 @@ fields.forEach(f=>{
 function n(v){return Number((v||"").replace(/\./g,"").replace(",","."))||0;}
 function f(v){return Math.round(v).toLocaleString("es-ES");}
 function save(){fields.forEach(x=>localStorage.setItem(x,$(x).value));}
+
+function cambiarIdioma(){
+
+    const lang = $("idioma").value;
+    localStorage.setItem("idioma", lang);
+
+    const t = textos[lang];
+
+    $("titulo").textContent = t.titulo;
+
+    $("lblFecha").textContent = t.fecha;
+    $("lblNombre").textContent = t.nombre;
+    $("lblTabla").textContent = t.tabla;
+    $("lblReparacion").textContent = t.reparacion;
+    $("lblVenta").textContent = t.venta;
+    $("lblImpuestos").textContent = t.impuestos;
+    $("lblBolsas").textContent = t.bolsas;
+    $("lblJugadores").textContent = t.jugadores;
+
+    $("txtNeta").textContent = t.tabNeta;
+    $("txtVenta").textContent = t.ventaTxt;
+    $("txtImpuestos").textContent = t.impuestosTxt;
+    $("txtTotal").textContent = t.lootTotal;
+    $("txtSplit").textContent = t.lootSplit;
+
+    $("btnCopiar").textContent = t.copiar;
+    $("btnLimpiar").textContent = t.limpiar;
+}
 
 function calc(){
  save();
@@ -45,29 +128,102 @@ function calc(){
 
 function copiar(){
 
- const txt=`💰 **LOOT SPLIT**
+ const lang = $("idioma").value;
 
-📅 ${$("fecha").value.replace("T"," ")}
-🏴 ${$("nombre").value}
+ let txt = "";
 
-📦 Tab: ${f(n($("tabla").value))}
-🛠 Rep: ${f(n($("reparacion").value))}
-📉 Neta: ${$("neta").textContent}
-💲 Venta (${ $("ventaPct").textContent }%): ${$("venta").textContent}
-💸 Imp. (${ $("impPct").textContent }%): ${$("impuestos").textContent}
-🎒 Bolsas: ${f(n($("bolsas").value))}
-👥 Jugadores: ${$("jugadores").value}
+ if(lang === "es"){
+
+txt=`💰 LOOT SPLIT GANKEO
+
+📅 Fecha
+${$("fecha").value.replace("T"," ")}
+
+🏴 Nombre
+${$("nombre").value}
+
+📦 Loot Tabla
+${f(n($("tabla").value))}
+
+🛠 Reparación
+${f(n($("reparacion").value))}
+
+📉 Tabla Neta
+${$("neta").textContent}
+
+💲 Venta Tabla (${$("ventaPct").textContent}%)
+${$("venta").textContent}
+
+💸 Impuestos (${$("impPct").textContent}%)
+${$("impuestos").textContent}
+
+🎒 Loot Bolsas
+${f(n($("bolsas").value))}
+
+👥 Jugadores
+${$("jugadores").value}
 
 ━━━━━━━━━━━━━━━━━━
-💰 Total: ${$("total").textContent}
-💵 Split: ${$("split").textContent} c/u
+
+💰 Loot Total
+${$("total").textContent}
+
+💵 Loot Split
+${$("split").textContent} por jugador
+
 ━━━━━━━━━━━━━━━━━━
-⚔ Gank Split Manager
+⚔ Calculado con Gank Split Manager by xTrux
 https://xtrax98.github.io/AlbionSplitGank/`;
 
+ }else{
+
+txt=`💰 GANK LOOT SPLIT
+
+📅 Date
+${$("fecha").value.replace("T"," ")}
+
+🏴 Name
+${$("nombre").value}
+
+📦 Loot Value
+${f(n($("tabla").value))}
+
+🛠 Repair Cost
+${f(n($("reparacion").value))}
+
+📉 Net Loot
+${$("neta").textContent}
+
+💲 Sale Value (${$("ventaPct").textContent}%)
+${$("venta").textContent}
+
+💸 Taxes (${$("impPct").textContent}%)
+${$("impuestos").textContent}
+
+🎒 Bag Loot
+${f(n($("bolsas").value))}
+
+👥 Players
+${$("jugadores").value}
+
+━━━━━━━━━━━━━━━━━━
+
+💰 Total Loot
+${$("total").textContent}
+
+💵 Loot Split
+${$("split").textContent} per player
+
+━━━━━━━━━━━━━━━━━━
+⚔ Calculated with Gank Split Manager by xTrux
+https://xtrax98.github.io/AlbionSplitGank/`;
+
+ }
+
  navigator.clipboard.writeText(txt)
-   .then(() => alert("Copiado."))
-   .catch(() => alert("No se pudo copiar."));
+   .then(() => alert(textos[lang].copiado))
+   .catch(() => alert(textos[lang].error));
+
 }
 
 function limpiar(){
@@ -75,4 +231,11 @@ function limpiar(){
  localStorage.clear();
  calc();
 }
+
+const idiomaGuardado = localStorage.getItem("idioma") || "es";
+
+$("idioma").value = idiomaGuardado;
+
+cambiarIdioma();
+
 calc();
