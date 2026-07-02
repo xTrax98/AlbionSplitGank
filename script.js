@@ -45,55 +45,29 @@ function calc(){
 
 function copiar(){
 
- const txt=`💰 LOOT SPLIT GANKEO
+ const txt=`💰 **LOOT SPLIT**
 
-📅 Fecha
-${$("fecha").value.replace("T"," ")}
+📅 ${$("fecha").value.replace("T"," ")}
+🏴 ${$("nombre").value}
 
-🏴 Nombre
-${$("nombre").value}
-
-📦 Loot Tabla
-${f(n($("tabla").value))}
-
-🛠 Reparación
-${f(n($("reparacion").value))}
-
-📉 Tabla Neta
-${$("neta").textContent}
-
-💲 Venta Tabla (${$("ventaPct").textContent}%)
-${$("venta").textContent}
-
-💸 Impuestos (${$("impPct").textContent}%)
-${$("impuestos").textContent}
-
-🎒 Loot Bolsas
-${f(n($("bolsas").value))}
-
-👥 Jugadores
-${$("jugadores").value}
+📦 Tab: ${f(n($("tabla").value))}
+🛠 Rep: ${f(n($("reparacion").value))}
+📉 Neta: ${$("neta").textContent}
+💲 Venta (${ $("ventaPct").textContent }%): ${$("venta").textContent}
+💸 Imp. (${ $("impPct").textContent }%): ${$("impuestos").textContent}
+🎒 Bolsas: ${f(n($("bolsas").value))}
+👥 Jugadores: ${$("jugadores").value}
 
 ━━━━━━━━━━━━━━━━━━
-
-💰 Loot Total
-${$("total").textContent}
-
-💵 Loot Split
-${$("split").textContent} por jugador
-
+💰 Total: ${$("total").textContent}
+💵 Split: ${$("split").textContent} c/u
 ━━━━━━━━━━━━━━━━━━
-⚔ Calculado con Gank Split Manager by xTrux
+⚔ Gank Split Manager
 https://xtrax98.github.io/AlbionSplitGank/`;
 
  navigator.clipboard.writeText(txt)
-   .then(() => {
-      alert("Copiado.");
-   })
-   .catch(err => {
-      console.error(err);
-      alert("No se pudo copiar al portapapeles.");
-   });
+   .then(() => alert("Copiado."))
+   .catch(() => alert("No se pudo copiar."));
 }
 
 function limpiar(){
