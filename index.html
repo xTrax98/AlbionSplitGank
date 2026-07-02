@@ -6,30 +6,73 @@
 <title>Albion Gank Split Manager by xTrux</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="card">
-<h1>🗡️Gank Split Manager by xTrux</h1>
 
-<label>Fecha-Hora</label><input id="fecha" type="datetime-local">
-<label>Nombre</label><input id="nombre">
-<label>Loot Tab</label><input id="tabla">
-<label>Reparación</label><input id="reparacion">
-<label>% Venta Tabla</label><input id="porcentajeVenta" value="82.5">
-<label>% Impuestos</label><input id="porcentajeImpuestos" value="0">
-<label>Loot Bolsas</label><input id="bolsas">
-<label>Jugadores</label><input id="jugadores" type="number" min="1">
+    <h1 id="titulo">🗡️ Gank Split Manager by xTrux</h1>
 
-<div class="results">
-<p>Tab Neta: <span id="neta">0</span></p>
-<p>Venta (<span id="ventaPct">82,5</span>%): <span id="venta">0</span></p>
-<p>Impuestos (<span id="impPct">0</span>%): <span id="impuestos">0</span></p>
-<p>Loot Total: <span id="total">0</span></p>
-<h2>Loot Split: <span id="split">0</span></h2>
+    <div style="text-align:right;margin-bottom:15px;">
+        <select id="idioma" onchange="cambiarIdioma()">
+            <option value="es">🇪🇸 Español</option>
+            <option value="en">🇬🇧 English</option>
+        </select>
+    </div>
+
+    <label id="lblFecha">Fecha-Hora</label>
+    <input id="fecha" type="datetime-local">
+
+    <label id="lblNombre">Nombre</label>
+    <input id="nombre">
+
+    <label id="lblTabla">Loot Tab</label>
+    <input id="tabla">
+
+    <label id="lblReparacion">Reparación</label>
+    <input id="reparacion">
+
+    <label id="lblVenta">% Venta Tabla</label>
+    <input id="porcentajeVenta" value="82.5">
+
+    <label id="lblImpuestos">% Impuestos</label>
+    <input id="porcentajeImpuestos" value="0">
+
+    <label id="lblBolsas">Loot Bolsas</label>
+    <input id="bolsas">
+
+    <label id="lblJugadores">Jugadores</label>
+    <input id="jugadores" type="number" min="1">
+
+    <div class="results">
+
+        <p><span id="txtNeta">Tab Neta</span>: <span id="neta">0</span></p>
+
+        <p>
+            <span id="txtVenta">Venta</span>
+            (<span id="ventaPct">82,5</span>%):
+            <span id="venta">0</span>
+        </p>
+
+        <p>
+            <span id="txtImpuestos">Impuestos</span>
+            (<span id="impPct">0</span>%):
+            <span id="impuestos">0</span>
+        </p>
+
+        <p><span id="txtTotal">Loot Total</span>: <span id="total">0</span></p>
+
+        <h2><span id="txtSplit">Loot Split</span>: <span id="split">0</span></h2>
+
+    </div>
+
+    <button id="btnCopiar" onclick="copiar()">📋 Copiar para Discord</button>
+
+    <button id="btnLimpiar" onclick="limpiar()">🧹 Limpiar</button>
+
 </div>
 
-<button onclick="copiar()">📋 Copiar para Discord</button>
-<button onclick="limpiar()">🧹 Limpiar</button>
-</div>
 <script src="script.js"></script>
+
 </body>
 </html>
