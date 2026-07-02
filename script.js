@@ -44,7 +44,8 @@ function calc(){
 }
 
 function copiar() {
-    alert("El botón funciona");
+    navigator.clipboard.writeText("Hola");
+    alert("Copiado");
 }
 
 function limpiar(){
