@@ -82,6 +82,10 @@ ${$("total").textContent}
 ${$("split").textContent} por jugador`;
  navigator.clipboard.writeText(txt);
  alert("Copiado.");
+
+ ━━━━━━━━━━━━━━━━━━
+⚔ Calculado con Gank Split Manager by xTrux
+ https://xtrax98.github.io/AlbionSplitGank/
 }
 function limpiar(){
  fields.forEach(f=>$(f).value="");
