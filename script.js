@@ -43,9 +43,57 @@ function calc(){
  $("split").textContent=Math.round(split).toString();
 }
 
-function copiar() {
-    navigator.clipboard.writeText("Hola");
-    alert("Copiado");
+function copiar(){
+
+ const txt=`💰 LOOT SPLIT GANKEO
+
+📅 Fecha
+${$("fecha").value.replace("T"," ")}
+
+🏴 Nombre
+${$("nombre").value}
+
+📦 Loot Tabla
+${f(n($("tabla").value))}
+
+🛠 Reparación
+${f(n($("reparacion").value))}
+
+📉 Tabla Neta
+${$("neta").textContent}
+
+💲 Venta Tabla (${$("ventaPct").textContent}%)
+${$("venta").textContent}
+
+💸 Impuestos (${$("impPct").textContent}%)
+${$("impuestos").textContent}
+
+🎒 Loot Bolsas
+${f(n($("bolsas").value))}
+
+👥 Jugadores
+${$("jugadores").value}
+
+━━━━━━━━━━━━━━━━━━
+
+💰 Loot Total
+${$("total").textContent}
+
+💵 Loot Split
+${$("split").textContent} por jugador
+
+━━━━━━━━━━━━━━━━━━
+⚔ Calculado con Gank Split Manager by xTrux
+https://xtrax98.github.io/AlbionSplitGank/`;
+
+ navigator.clipboard.writeText(txt)
+   .then(() => {
+      alert("Copiado.");
+   })
+   .catch(err => {
+      console.error(err);
+      alert("No se pudo copiar al portapapeles.");
+   });
 }
 
 function limpiar(){
