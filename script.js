@@ -40,7 +40,7 @@ function calc(){
  $("venta").textContent=f(venta);
  $("impuestos").textContent=f(impuestos);
  $("total").textContent=f(total);
- $("split").textContent=f(split);
+ $("split").textContent=Math.round(split).toString();
 }
 
 function copiar(){
