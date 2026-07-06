@@ -180,20 +180,31 @@ function calc(){
        bol=n($("bolsas").value),
        jug=Math.max(1,Number($("jugadores").value)||1);
 
- const neta=Math.max(0,tabla-rep);
- const pv=Number($("porcentajeVenta").value)||82.5;
- const pi=Number($("porcentajeImpuestos").value)||0;
+ const pv = Number($("porcentajeVenta").value) || 82.5;
+const pi = Number($("porcentajeImpuestos").value) || 0;
 
- const venta=neta*(pv/100);
- const subtotal=venta+bol;
- const impuestos=subtotal*(pi/100);
- const total=subtotal-impuestos;
- const split=total/jug;
+// La reparación YA NO se resta a la tabla
+const venta = tabla * (pv / 100);
+
+const subtotal = venta + bol;
+
+const impuestos = subtotal * (pi / 100);
+
+const total = subtotal - impuestos;
+
+// Reparto antes de descontar reparación
+const splitBruto = total / jug;
+
+// Reparación por jugador
+const reparacionJugador = rep / jug;
+
+// Split final
+const split = splitBruto - reparacionJugador;
 
  $("ventaPct").textContent=String(pv).replace(".",",");
  $("impPct").textContent=String(pi).replace(".",",");
 
- $("neta").textContent=f(neta);
+ $("neta").textContent=f(reparacionJugador);
  $("venta").textContent=f(venta);
  $("impuestos").textContent=f(impuestos);
  $("total").textContent=f(total);
