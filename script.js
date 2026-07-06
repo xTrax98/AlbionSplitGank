@@ -15,7 +15,7 @@ impuestos:"% Impuestos",
 bolsas:"Loot Bolsas",
 jugadores:"Jugadores",
 
-tabNeta:"Tab Neta",
+tabNeta:"Rep./Jugador",
 ventaTxt:"Venta",
 impuestosTxt:"Impuestos",
 lootTotal:"Loot Total",
@@ -33,12 +33,13 @@ infoContenido:`
 <p><strong>Fórmula utilizada:</strong></p>
 
 <ol>
-<li><strong>Loot Tabla - Reparación = Tabla Neta</strong></li>
-<li><strong>Tabla Neta × % Venta = Venta Tabla</strong></li>
+<li><strong>Loot Tabla × % Venta = Venta Tabla</strong></li>
 <li><strong>Venta Tabla + Loot Bolsas = Subtotal</strong></li>
 <li><strong>Subtotal × % Impuestos = Impuestos</strong></li>
 <li><strong>Subtotal - Impuestos = Loot Total</strong></li>
-<li><strong>Loot Total ÷ Jugadores = Loot Split</strong></li>
+<li><strong>Loot Total ÷ Jugadores = Split Bruto</strong></li>
+<li><strong>Reparación ÷ Jugadores = Reparación por Jugador</strong></li>
+<li><strong>Split Bruto - Reparación por Jugador = Loot Split Final</strong></li>
 </ol>
 
 <hr>
@@ -47,18 +48,17 @@ infoContenido:`
 
 <p>
 Loot Tabla: <b>10.000.000</b><br>
-Reparación: <b>500.000</b><br>
-Tabla Neta: <b>9.500.000</b><br><br>
-
-Venta (82,5%): <b>7.837.500</b><br>
+Venta (82,5%): <b>8.250.000</b><br>
 Loot Bolsas: <b>1.200.000</b><br>
-Subtotal: <b>9.037.500</b><br>
-Impuestos (5%): <b>451.875</b><br><br>
+Subtotal: <b>9.450.000</b><br>
+Impuestos (5%): <b>472.500</b><br>
+Loot Total: <b>8.977.500</b><br>
+Jugadores: <b>7</b><br>
+Split Bruto: <b>1.282.500</b><br>
+Reparación: <b>700.000</b><br>
+Rep./Jugador: <b>100.000</b><br><br>
 
-Loot Total: <b>8.585.625</b><br>
-Jugadores: <b>7</b><br><br>
-
-<b>Loot Split: 1.226.518</b>
+<b>Loot Split Final: 1.182.500</b>
 </p>
 `
 },
@@ -75,7 +75,7 @@ impuestos:"% Taxes",
 bolsas:"Bag Loot",
 jugadores:"Players",
 
-tabNeta:"Net Loot",
+tabNeta:"Repair/Player",
 ventaTxt:"Sale Value",
 impuestosTxt:"Taxes",
 lootTotal:"Total Loot",
@@ -225,8 +225,8 @@ txt=`💰 LOOT SPLIT
 🏴 ${$("nombre").value}
 
 📦 Tab: ${f(n($("tabla").value))}
-🛠 Rep: ${f(n($("reparacion").value))}
-📉 Neta: ${$("neta").textContent}
+🛠 Reparación: ${f(n($("reparacion").value))}
+🧍 Rep./Jugador: ${$("neta").textContent}
 💲 Venta (${ $("ventaPct").textContent }%): ${$("venta").textContent}
 💸 Imp. (${ $("impPct").textContent }%): ${$("impuestos").textContent}
 🎒 Bolsas: ${f(n($("bolsas").value))}
@@ -248,7 +248,7 @@ txt=`💰 GANK LOOT SPLIT
 
 📦 Loot: ${f(n($("tabla").value))}
 🛠 Repair: ${f(n($("reparacion").value))}
-📉 Net: ${$("neta").textContent}
+🧍 Repair/Player: ${$("neta").textContent}
 💲 Sale (${ $("ventaPct").textContent }%): ${$("venta").textContent}
 💸 Tax (${ $("impPct").textContent }%): ${$("impuestos").textContent}
 🎒 Bags: ${f(n($("bolsas").value))}
