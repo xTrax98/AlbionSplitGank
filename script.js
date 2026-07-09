@@ -11,6 +11,7 @@ nombre:"Nombre",
 tabla:"Loot Tab",
 reparacion:"Reparación",
 venta:"% Venta Tabla",
+guild:"Depósito Guild",
 impuestos:"% Impuestos",
 bolsas:"Loot Bolsas",
 jugadores:"Jugadores",
@@ -71,6 +72,7 @@ nombre:"Name",
 tabla:"Loot Value",
 reparacion:"Repair Cost",
 venta:"% Sale Value",
+guild:"Guild Deposit",
 impuestos:"% Taxes",
 bolsas:"Bag Loot",
 jugadores:"Players",
@@ -154,6 +156,7 @@ function cambiarIdioma(){
     $("lblTabla").textContent = t.tabla;
     $("lblReparacion").textContent = t.reparacion;
     $("lblVenta").textContent = t.venta;
+    $("txtGuild").textContent = t.guild;
     $("lblImpuestos").textContent = t.impuestos;
     $("lblBolsas").textContent = t.bolsas;
     $("lblJugadores").textContent = t.jugadores;
@@ -186,6 +189,8 @@ const pi = Number($("porcentajeImpuestos").value) || 0;
 // La reparación YA NO se resta a la tabla
 const venta = tabla * (pv / 100);
 
+const depositoGuild = Math.max(0, venta - rep);
+
 const subtotal = venta + bol;
 
 const impuestos = subtotal * (pi / 100);
@@ -206,6 +211,7 @@ const split = splitBruto - reparacionJugador;
 
  $("neta").textContent=f(reparacionJugador);
  $("venta").textContent=f(venta);
+ $("guild").textContent = f(depositoGuild);
  $("impuestos").textContent=f(impuestos);
  $("total").textContent=f(total);
  $("split").textContent=Math.round(split).toString();
@@ -228,6 +234,7 @@ txt=`💰 LOOT SPLIT
 🛠 Reparación: ${f(n($("reparacion").value))}
 🧍 Rep./Jugador: ${$("neta").textContent}
 💲 Venta (${ $("ventaPct").textContent }%): ${$("venta").textContent}
+🏦 Guild: ${$("guild").textContent}
 💸 Imp. (${ $("impPct").textContent }%): ${$("impuestos").textContent}
 🎒 Bolsas: ${f(n($("bolsas").value))}
 👥 Jugadores: ${$("jugadores").value}
@@ -250,6 +257,7 @@ txt=`💰 GANK LOOT SPLIT
 🛠 Repair: ${f(n($("reparacion").value))}
 🧍 Repair/Player: ${$("neta").textContent}
 💲 Sale (${ $("ventaPct").textContent }%): ${$("venta").textContent}
+🏦 Guild: ${$("guild").textContent}
 💸 Tax (${ $("impPct").textContent }%): ${$("impuestos").textContent}
 🎒 Bags: ${f(n($("bolsas").value))}
 👥 Players: ${$("jugadores").value}
