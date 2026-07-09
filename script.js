@@ -95,12 +95,13 @@ infoContenido:`
 <p><strong>Formula used:</strong></p>
 
 <ol>
-<li><strong>Loot Value - Repair Cost = Net Loot</strong></li>
-<li><strong>Net Loot × Sale % = Sale Value</strong></li>
+<li><strong>Loot Value × Sale % = Sale Value</strong></li>
 <li><strong>Sale Value + Bag Loot = Subtotal</strong></li>
 <li><strong>Subtotal × Tax % = Taxes</strong></li>
 <li><strong>Subtotal - Taxes = Total Loot</strong></li>
-<li><strong>Total Loot ÷ Players = Loot Split</strong></li>
+<li><strong>Total Loot ÷ Players = Gross Split</strong></li>
+<li><strong>Repair Cost ÷ Players = Repair per Player</strong></li>
+<li><strong>Gross Split - Repair per Player = Final Loot Split</strong></li>
 </ol>
 
 <hr>
@@ -109,18 +110,17 @@ infoContenido:`
 
 <p>
 Loot Value: <b>10,000,000</b><br>
-Repair Cost: <b>500,000</b><br>
-Net Loot: <b>9,500,000</b><br><br>
-
-Sale (82.5%): <b>7,837,500</b><br>
+Sale (82.5%): <b>8,250,000</b><br>
 Bag Loot: <b>1,200,000</b><br>
-Subtotal: <b>9,037,500</b><br>
-Taxes (5%): <b>451,875</b><br><br>
+Subtotal: <b>9,450,000</b><br>
+Taxes (5%): <b>472,500</b><br>
+Total Loot: <b>8,977,500</b><br>
+Players: <b>7</b><br>
+Gross Split: <b>1,282,500</b><br>
+Repair Cost: <b>700,000</b><br>
+Repair/Player: <b>100,000</b><br><br>
 
-Total Loot: <b>8,585,625</b><br>
-Players: <b>7</b><br><br>
-
-<b>Loot Split: 1,226,518</b>
+<b>Final Loot Split: 1,182,500</b>
 </p>
 `
 }
@@ -204,7 +204,7 @@ const splitBruto = total / jug;
 const reparacionJugador = rep / jug;
 
 // Split final
-const split = splitBruto - reparacionJugador;
+const split = Math.max(0, splitBruto - reparacionJugador);
 
  $("ventaPct").textContent=String(pv).replace(".",",");
  $("impPct").textContent=String(pi).replace(".",",");
