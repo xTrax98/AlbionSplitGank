@@ -279,7 +279,7 @@ https://xtrax98.github.io/AlbionSplitGank/`;
 
 function limpiar(){
  fields.forEach(f=>$(f).value="");
- localStorage.clear();
+ fields.forEach(f=>localStorage.removeItem(f));
  calc();
 }
 
